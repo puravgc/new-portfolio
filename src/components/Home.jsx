@@ -1,25 +1,61 @@
 import React from "react";
+import { useDarkMode } from "../context/DarkModeContext";
 
 const Home = () => {
+  const { isDark } = useDarkMode();
+
   return (
-    <div className="relative w-full h-screen flex flex-col items-center justify-center px-8 bg-gray-50">
+    <div
+      className="relative w-full h-screen flex flex-col items-center justify-center px-8 transition-colors duration-500"
+      style={{ background: isDark ? "#111111" : "#f9fafb" }}
+    >
       <div className="max-w-4xl text-center space-y-8 animate-fade-up">
-        <h1 className="text-5xl md:text-7xl font-semibold text-gray-900 tracking-tight">
+        <h1
+          className="text-5xl md:text-7xl font-semibold tracking-tight transition-colors duration-500"
+          style={{ color: isDark ? "#f9fafb" : "#111827" }}
+        >
           Purav G.C
         </h1>
-        <h2 className="text-2xl md:text-3xl text-gray-700 font-light">
+        <h2
+          className="text-2xl md:text-3xl font-light transition-colors duration-500"
+          style={{ color: isDark ? "#9ca3af" : "#374151" }}
+        >
           Fullstack Developer
         </h2>
-        <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-light">
+        <p
+          className="text-lg md:text-xl leading-relaxed font-light transition-colors duration-500"
+          style={{ color: isDark ? "#6b7280" : "#4b5563" }}
+        >
           Currently working as a Frontend Developer, crafting seamless digital
           experiences with modern technologies and clean, efficient code.
         </p>
 
         <div className="flex gap-6 justify-center mt-8">
-          <button className="px-8 py-3 bg-gray-900 text-white rounded-md font-medium text-lg hover:bg-gray-800 transition-all duration-300 tracking-wide">
+          <button
+            className="cursor-pointer px-8 py-3 rounded-md font-medium text-lg transition-all duration-300 tracking-wide"
+            style={{
+              background: isDark ? "#f9fafb" : "#111827",
+              color: isDark ? "#111827" : "#f9fafb",
+            }}
+          >
             VIEW WORK
           </button>
-          <button className="px-8 py-3 bg-white text-gray-900 rounded-md font-medium text-lg border-2 border-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 tracking-wide">
+          <button
+            className="cursor-pointer px-8 py-3 rounded-md font-medium text-lg transition-all duration-300 tracking-wide"
+            style={{
+              background: "transparent",
+              color: isDark ? "#f9fafb" : "#111827",
+              border: `2px solid ${isDark ? "#f9fafb" : "#111827"}`,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = isDark ? "#f9fafb" : "#111827";
+              e.currentTarget.style.color = isDark ? "#111827" : "#f9fafb";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.color = isDark ? "#f9fafb" : "#111827";
+            }}
+          >
             CONTACT ME
           </button>
         </div>

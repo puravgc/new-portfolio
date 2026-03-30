@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useDarkMode } from "../../context/DarkModeContext";
 
 const Landing = ({ onComplete }) => {
   const [fadeOut, setFadeOut] = useState(false);
   const name = "Purav G.C";
   const title = "FULLSTACK DEVELOPER";
+  const { isDark } = useDarkMode();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -38,6 +40,7 @@ const Landing = ({ onComplete }) => {
       className={`fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-800 ${
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
+      style={{ background: isDark ? "#111111" : "#f9fafb" }}
     >
       <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;700&family=Inter:wght@300;400&display=swap"
@@ -45,10 +48,16 @@ const Landing = ({ onComplete }) => {
       />
 
       <div className="text-center overflow-hidden">
-        <h1 className="text-8xl md:text-9xl font-light text-gray-900 tracking-tight mb-8">
+        <h1
+          className="text-8xl md:text-9xl font-light text-gray-900 tracking-tight mb-8"
+          style={{ color: isDark ? "#f9fafb" : "#111827" }}
+        >
           {animateWords(name, 0, 0.2)}
         </h1>
-        <p className="text-2xl md:text-3xl font-light text-gray-600 tracking-widest">
+        <p
+          className="text-2xl md:text-3xl font-light text-gray-600 tracking-widest"
+          style={{ color: isDark ? "#f9fafb" : "#111827" }}
+        >
           {animateWords(title, 0.6, 0.2)}
         </p>
       </div>

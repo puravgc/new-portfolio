@@ -1,27 +1,26 @@
-import React, { useState, Suspense, lazy, useRef } from "react";
-import Navigation from "./components/Navigation";
-import VerticalSwiper from "./components/ui/VerticalSwiper";
-
-const Landing = lazy(() => import("./components/loader/Landing"));
-const Loader = lazy(() => import("./components/loader/Loader"));
+import React from "react";
+import { DarkModeProvider } from "./context/DarkModeContext";
+import AppLayout from "./components/AppLayout";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const [showLanding, setShowLanding] = useState(true);
-  const swiperRef = useRef(null); // Swiper instance reference
-
-  const handleLandingComplete = () => setShowLanding(false);
-
   return (
-    <div className="h-screen w-full relative bg-gray-200">
-      <Navigation swiperRef={swiperRef} />
-      <Suspense fallback={<Loader />}>
-        {showLanding ? (
-          <Landing onComplete={handleLandingComplete} />
-        ) : (
-          <VerticalSwiper swiperRef={swiperRef} />
-        )}
-      </Suspense>
-    </div>
+    <DarkModeProvider>
+      <AppLayout />
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+    </DarkModeProvider>
   );
 }
 

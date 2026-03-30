@@ -1,56 +1,57 @@
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Keyboard } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import { useDarkMode } from "../context/DarkModeContext";
+
+import AboutMe from "./about/AboutMe";
+import Education from "./about/Education";
+import Experience from "./about/Experience";
 
 const About = () => {
-  return (
-    <div className="relative w-full h-screen flex flex-col items-center justify-center px-8 bg-gray-50">
-      <div className="max-w-4xl text-center space-y-8 animate-fade-up">
-        <h1 className="text-5xl md:text-7xl font-semibold text-gray-900 tracking-tight">
-          About Me
-        </h1>
-        <div className="space-y-6 text-lg md:text-xl text-gray-600 leading-relaxed font-light">
-          <p>
-            I'm a passionate fullstack developer with a keen eye for design and
-            a love for creating intuitive user experiences. With expertise in
-            modern web technologies, I transform ideas into functional and
-            beautiful applications.
-          </p>
-          <p>
-            My journey in development started with curiosity and has evolved
-            into a commitment to crafting elegant solutions to complex problems.
-            I believe in writing clean, maintainable code and staying updated
-            with the latest industry trends.
-          </p>
-        </div>
+  const { isDark } = useDarkMode();
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
-          <div className="space-y-2">
-            <h3 className="text-3xl font-semibold text-gray-900">3+</h3>
-            <p className="text-sm text-gray-600 uppercase tracking-wide">
-              Years Experience
-            </p>
-          </div>
-          <div className="space-y-2">
-            <h3 className="text-3xl font-semibold text-gray-900">20+</h3>
-            <p className="text-sm text-gray-600 uppercase tracking-wide">
-              Projects Completed
-            </p>
-          </div>
-          <div className="space-y-2">
-            <h3 className="text-3xl font-semibold text-gray-900">15+</h3>
-            <p className="text-sm text-gray-600 uppercase tracking-wide">
-              Technologies
-            </p>
-          </div>
-          <div className="space-y-2">
-            <h3 className="text-3xl font-semibold text-gray-900">100%</h3>
-            <p className="text-sm text-gray-600 uppercase tracking-wide">
-              Client Satisfaction
-            </p>
-          </div>
-        </div>
-      </div>
+  const textColor = isDark ? "#f9fafb" : "#111827";
+  const subTextColor = isDark ? "#9ca3af" : "#4b5563";
+
+  return (
+    <div
+      className="relative w-full h-screen overflow-hidden transition-colors duration-500"
+      style={{ background: isDark ? "#111111" : "#f9fafb" }}
+    >
+      <Swiper
+        modules={[Pagination, Keyboard]}
+        pagination={{ clickable: true }}
+        navigation={false}
+        keyboard={true}
+        className="h-full w-full about-swiper"
+        spaceBetween={0}
+        slidesPerView={1}
+      >
+        <SwiperSlide>
+          <Experience />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Education />
+        </SwiperSlide>
+        <SwiperSlide>
+          <AboutMe />
+        </SwiperSlide>
+      </Swiper>
 
       <style jsx>{`
+        .about-swiper :global(.swiper-pagination-bullet) {
+          background: ${subTextColor};
+          opacity: 0.5;
+        }
+
+        .about-swiper :global(.swiper-pagination-bullet-active) {
+          background: ${textColor} !important;
+          opacity: 1;
+          transform: scale(1.2);
+        }
+
         @keyframes fade-up {
           0% {
             opacity: 0;
@@ -62,7 +63,7 @@ const About = () => {
           }
         }
 
-        .animate-fade-up {
+        :global(.animate-fade-up) {
           animation: fade-up 1s ease-out 0.2s both;
         }
       `}</style>

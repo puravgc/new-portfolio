@@ -1,6 +1,9 @@
 import React from "react";
+import { useDarkMode } from "../context/DarkModeContext";
 
 const Projects = () => {
+  const { isDark } = useDarkMode();
+
   const projects = [
     {
       title: "E-Commerce Platform",
@@ -25,13 +28,22 @@ const Projects = () => {
   ];
 
   return (
-    <div className="relative w-full h-screen flex flex-col items-center justify-center px-8 bg-gray-50 overflow-y-auto">
+    <div
+      className="relative w-full h-screen flex flex-col items-center justify-center px-8 overflow-y-auto transition-colors duration-500"
+      style={{ background: isDark ? "#111111" : "#f9fafb" }}
+    >
       <div className="max-w-5xl w-full py-16 animate-fade-up">
         <div className="text-center space-y-4 mb-12">
-          <h1 className="text-5xl md:text-7xl font-semibold text-gray-900 tracking-tight">
+          <h1
+            className="text-5xl md:text-7xl font-semibold tracking-tight transition-colors duration-500"
+            style={{ color: isDark ? "#f9fafb" : "#111827" }}
+          >
             My Projects
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 font-light">
+          <p
+            className="text-lg md:text-xl font-light transition-colors duration-500"
+            style={{ color: isDark ? "#9ca3af" : "#4b5563" }}
+          >
             A collection of work I'm proud of
           </p>
         </div>
@@ -40,15 +52,34 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-white p-8 rounded-lg border-2 border-gray-200 hover:border-gray-900 transition-all duration-300 space-y-4"
+              className="p-8 rounded-lg border-2 transition-all duration-300 space-y-4"
+              style={{
+                background: isDark ? "#1a1a1a" : "#ffffff",
+                borderColor: isDark ? "#2d2d2d" : "#e5e7eb",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = isDark ? "#f9fafb" : "#111827";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = isDark ? "#2d2d2d" : "#e5e7eb";
+              }}
             >
-              <h3 className="text-2xl font-semibold text-gray-900">
+              <h3
+                className="text-2xl font-semibold transition-colors duration-500"
+                style={{ color: isDark ? "#f9fafb" : "#111827" }}
+              >
                 {project.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p
+                className="leading-relaxed transition-colors duration-500"
+                style={{ color: isDark ? "#9ca3af" : "#4b5563" }}
+              >
                 {project.description}
               </p>
-              <p className="text-sm text-gray-500 uppercase tracking-wide">
+              <p
+                className="text-sm uppercase tracking-wide transition-colors duration-500"
+                style={{ color: isDark ? "#6b7280" : "#9ca3af" }}
+              >
                 {project.tech}
               </p>
             </div>

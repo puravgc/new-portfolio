@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Keyboard } from "swiper/modules";
 import "swiper/css";
@@ -8,9 +8,12 @@ import { useDarkMode } from "../context/DarkModeContext";
 import AboutMe from "./about/AboutMe";
 import Education from "./about/Education";
 import Experience from "./about/Experience";
+import AnimatedArrow from "./ui/AnimatedArrow";
 
 const About = () => {
   const { isDark } = useDarkMode();
+  const swiperRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const textColor = isDark ? "#f9fafb" : "#111827";
   const subTextColor = isDark ? "#9ca3af" : "#4b5563";
@@ -20,7 +23,29 @@ const About = () => {
       className="relative w-full h-screen overflow-hidden transition-colors duration-500"
       style={{ background: isDark ? "#111111" : "#f9fafb" }}
     >
+      {/* Left Arrow */}
+      {activeIndex > 0 && (
+        <div
+          className="absolute left-8 top-1/2 -translate-y-1/2 z-50 cursor-pointer p-4 md:left-18"
+          onClick={() => swiperRef.current?.slidePrev()}
+        >
+          <AnimatedArrow direction="left" />
+        </div>
+      )}
+
+      {/* Right Arrow */}
+      {activeIndex < 2 && (
+        <div
+          className="absolute right-8 top-1/2 -translate-y-1/2 z-50 cursor-pointer p-4 md:right-18"
+          onClick={() => swiperRef.current?.slideNext()}
+        >
+          <AnimatedArrow direction="right" />
+        </div>
+      )}
+
       <Swiper
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
+        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
         modules={[Pagination, Keyboard]}
         pagination={{ clickable: true }}
         navigation={false}
@@ -39,7 +64,6 @@ const About = () => {
           <AboutMe />
         </SwiperSlide>
       </Swiper>
-
       <style jsx>{`
         .about-swiper :global(.swiper-pagination-bullet) {
           background: ${subTextColor};

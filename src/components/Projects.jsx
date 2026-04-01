@@ -7,12 +7,14 @@ const Projects = () => {
   const projects = [
     {
       title: "E-Commerce Platform",
-      description: "Full-stack online shopping experience with payment integration",
+      description:
+        "Full-stack online shopping experience with payment integration",
       tech: "React, Node.js, MongoDB",
     },
     {
       title: "Task Management App",
-      description: "Collaborative project management tool with real-time updates",
+      description:
+        "Collaborative project management tool with real-time updates",
       tech: "Next.js, Firebase, Tailwind",
     },
     {
@@ -58,10 +60,14 @@ const Projects = () => {
                 borderColor: isDark ? "#2d2d2d" : "#e5e7eb",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = isDark ? "#f9fafb" : "#111827";
+                e.currentTarget.style.borderColor = isDark
+                  ? "#f9fafb"
+                  : "#111827";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = isDark ? "#2d2d2d" : "#e5e7eb";
+                e.currentTarget.style.borderColor = isDark
+                  ? "#2d2d2d"
+                  : "#e5e7eb";
               }}
             >
               <h3

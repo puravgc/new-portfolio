@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDarkMode } from "../context/DarkModeContext";
 import { sendMyEmail } from "./helper/mail";
 import { toast } from "react-toastify";
+import BlurryBlobs from "./ui/BlurryBlobs";
 
 const Contact = () => {
   const { isDark } = useDarkMode();
@@ -38,30 +39,43 @@ const Contact = () => {
   const inputStyle = {
     width: "100%",
     padding: "1rem 1.5rem",
-    background: isDark ? "#1a1a1a" : "#ffffff",
-    border: `2px solid ${isDark ? "#2d2d2d" : "#e5e7eb"}`,
-    borderRadius: "0.375rem",
+    background: isDark ? "rgba(30, 30, 30, 0.4)" : "rgba(255, 255, 255, 0.3)",
+    border: `1px solid ${isDark ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.29)"}`,
+    borderRadius: "0.75rem",
     color: isDark ? "#f9fafb" : "#111827",
     outline: "none",
-    transition: "border-color 0.3s, background 0.5s, color 0.5s",
+    transition: "all 0.3s ease",
     fontSize: "1rem",
+    backdropFilter: "blur(12px)",
+    WebkitBackdropFilter: "blur(12px)",
   };
 
   const focusHandlers = {
     onFocus: (e) => {
-      e.currentTarget.style.borderColor = isDark ? "#f9fafb" : "#111827";
+      e.currentTarget.style.borderColor = isDark
+        ? "rgba(255, 255, 255, 0.3)"
+        : "rgba(0, 0, 0, 0.2)";
+      e.currentTarget.style.background = isDark
+        ? "rgba(40, 40, 40, 0.6)"
+        : "rgba(255, 255, 255, 0.5)";
     },
     onBlur: (e) => {
-      e.currentTarget.style.borderColor = isDark ? "#2d2d2d" : "#e5e7eb";
+      e.currentTarget.style.borderColor = isDark
+        ? "rgba(255, 255, 255, 0.1)"
+        : "rgba(0, 0, 0, 0.05)";
+      e.currentTarget.style.background = isDark
+        ? "rgba(30, 30, 30, 0.4)"
+        : "rgba(255, 255, 255, 0.3)";
     },
   };
 
   return (
     <div
-      className="relative w-full h-screen flex flex-col items-center justify-center px-8 transition-colors duration-500"
+      className="relative w-full h-screen flex flex-col items-center justify-center px-8 transition-colors duration-500 overflow-hidden"
       style={{ background: isDark ? "#111111" : "#f9fafb" }}
     >
-      <div className="max-w-2xl w-full space-y-8 animate-fade-up">
+      <BlurryBlobs />
+      <div className="max-w-2xl w-full space-y-8 animate-fade-up relative z-10">
         <div className="text-center space-y-4">
           <h1
             className="text-5xl md:text-7xl font-semibold tracking-tight transition-colors duration-500"
@@ -123,12 +137,27 @@ const Contact = () => {
           <button
             type="submit"
             disabled={isSending}
-            className="w-full px-8 py-4 rounded-md font-medium text-lg tracking-wide transition-all duration-300"
+            className="w-full px-8 py-4 rounded-xl font-medium text-lg tracking-wide transition-all duration-300 backdrop-blur-md"
             style={{
-              background: isDark ? "#f9fafb" : "#111827",
+              background: isDark
+                ? "rgba(249, 250, 251, 0.9)"
+                : "rgba(17, 24, 39, 0.9)",
               color: isDark ? "#111827" : "#f9fafb",
               opacity: isSending ? 0.7 : 1,
               cursor: isSending ? "not-allowed" : "pointer",
+              border: `1px solid ${isDark ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"}`,
+            }}
+            onMouseEnter={(e) => {
+              if (!isSending) {
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.boxShadow = isDark
+                  ? "0 10px 20px rgba(0,0,0,0.4)"
+                  : "0 10px 20px rgba(0,0,0,0.1)";
+              }
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "none";
             }}
           >
             {isSending ? (

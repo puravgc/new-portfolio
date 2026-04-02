@@ -1,15 +1,17 @@
 import React from "react";
 import { useDarkMode } from "../context/DarkModeContext";
+import BlurryBlobs from "./ui/BlurryBlobs";
 
 const Home = () => {
   const { isDark } = useDarkMode();
 
   return (
     <div
-      className="relative w-full h-screen flex flex-col items-center justify-center px-8 transition-colors duration-500"
+      className="relative w-full h-screen flex flex-col items-center justify-center px-8 transition-colors duration-500 overflow-hidden"
       style={{ background: isDark ? "#111111" : "#f9fafb" }}
     >
-      <div className="max-w-4xl text-center space-y-8 animate-fade-up">
+      <BlurryBlobs />
+      <div className="max-w-4xl text-center space-y-8 animate-fade-up relative z-10">
         <h1
           className="text-5xl md:text-7xl font-semibold tracking-tight transition-colors duration-500"
           style={{ color: isDark ? "#f9fafb" : "#111827" }}

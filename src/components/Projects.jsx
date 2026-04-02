@@ -1,5 +1,6 @@
 import React from "react";
 import { useDarkMode } from "../context/DarkModeContext";
+import BlurryBlobs from "./ui/BlurryBlobs";
 
 const Projects = () => {
   const { isDark } = useDarkMode();
@@ -31,10 +32,11 @@ const Projects = () => {
 
   return (
     <div
-      className="relative w-full h-screen flex flex-col items-center justify-center px-8 overflow-y-auto transition-colors duration-500"
+      className="relative w-full h-screen flex flex-col items-center justify-center px-8 overflow-hidden transition-colors duration-500"
       style={{ background: isDark ? "#111111" : "#f9fafb" }}
     >
-      <div className="max-w-5xl w-full py-16 animate-fade-up">
+      <BlurryBlobs />
+      <div className="max-w-5xl w-full py-16 animate-fade-up relative z-10">
         <div className="text-center space-y-4 mb-12">
           <h1
             className="text-5xl md:text-7xl font-semibold tracking-tight transition-colors duration-500"
@@ -54,20 +56,29 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="p-8 rounded-lg border-2 transition-all duration-300 space-y-4"
+              className="p-8 rounded-2xl border transition-all duration-500 space-y-4 backdrop-blur-md"
               style={{
-                background: isDark ? "#1a1a1a" : "#ffffff",
-                borderColor: isDark ? "#2d2d2d" : "#e5e7eb",
+                background: isDark
+                  ? "linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%), rgba(30, 30, 30, 0.4)"
+                  : "linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%)",
+                borderColor: isDark
+                  ? "rgba(255, 255, 255, 0.1)"
+                  : "rgba(255, 255, 255, 0.4)",
+                boxShadow: isDark
+                  ? "0 4px 24px 0 rgba(0, 0, 0, 0.37)"
+                  : "0 8px 32px 0 rgba(31, 38, 135, 0.07)",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = isDark
-                  ? "#f9fafb"
-                  : "#111827";
+                  ? "rgba(255, 255, 255, 0.2)"
+                  : "rgba(0, 0, 0, 0.15)";
+                e.currentTarget.style.transform = "translateY(-4px)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = isDark
-                  ? "#2d2d2d"
-                  : "#e5e7eb";
+                  ? "rgba(255, 255, 255, 0.08)"
+                  : "rgba(0, 0, 0, 0.05)";
+                e.currentTarget.style.transform = "translateY(0)";
               }}
             >
               <h3
@@ -82,12 +93,27 @@ const Projects = () => {
               >
                 {project.description}
               </p>
-              <p
-                className="text-sm uppercase tracking-wide transition-colors duration-500"
-                style={{ color: isDark ? "#6b7280" : "#9ca3af" }}
-              >
-                {project.tech}
-              </p>
+              <div className="flex flex-wrap gap-2 pt-2">
+                {project.tech.split(", ").map((t) => (
+                  <span
+                    key={t}
+                    className="px-3 py-1 rounded-full text-xs font-medium tracking-wide transition-colors duration-500"
+                    style={{
+                      background: isDark
+                        ? "rgba(255, 255, 255, 0.05)"
+                        : "rgba(0, 0, 0, 0.03)",
+                      color: isDark ? "#9ca3af" : "#4b5563",
+                      border: `1px solid ${
+                        isDark
+                          ? "rgba(255, 255, 255, 0.1)"
+                          : "rgba(0, 0, 0, 0.05)"
+                      }`,
+                    }}
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
             </div>
           ))}
         </div>

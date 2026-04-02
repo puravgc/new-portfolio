@@ -9,6 +9,7 @@ import AboutMe from "./about/AboutMe";
 import Education from "./about/Education";
 import Experience from "./about/Experience";
 import AnimatedArrow from "./ui/AnimatedArrow";
+import BlurryBlobs from "./ui/BlurryBlobs";
 
 const About = () => {
   const { isDark } = useDarkMode();
@@ -23,6 +24,7 @@ const About = () => {
       className="relative w-full h-screen overflow-hidden transition-colors duration-500"
       style={{ background: isDark ? "#111111" : "#f9fafb" }}
     >
+      <BlurryBlobs />
       {/* Left Arrow */}
       {activeIndex > 0 && (
         <div
@@ -50,7 +52,7 @@ const About = () => {
         pagination={{ clickable: true }}
         navigation={false}
         keyboard={true}
-        className="h-full w-full about-swiper"
+        className="h-full w-full about-swiper relative z-10"
         spaceBetween={0}
         slidesPerView={1}
       >

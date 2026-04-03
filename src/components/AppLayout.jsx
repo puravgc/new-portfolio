@@ -1,6 +1,5 @@
 import React, { useState, Suspense, lazy, useRef } from "react";
 import Navigation from "./Navigation";
-import DarkModeButton from "./DarkModeButton";
 import VerticalSwiper from "./ui/VerticalSwiper";
 import { useDarkMode } from "../context/DarkModeContext";
 
@@ -8,7 +7,7 @@ const Landing = lazy(() => import("./loader/Landing"));
 const Loader = lazy(() => import("./loader/Loader"));
 
 const AppLayout = () => {
-  const [showLanding, setShowLanding] = useState(true);
+  const [showLanding, setShowLanding] = useState(false);
   const swiperRef = useRef(null);
   const { isDark } = useDarkMode();
 
@@ -16,10 +15,8 @@ const AppLayout = () => {
 
   return (
     <div
-      className="h-screen w-full relative transition-colors duration-500"
-      style={{ background: isDark ? "#0f0f0f" : "#e5e7eb" }}
+      className="h-screen w-full relative transition-colors duration-500 bg-[#0f0f0f]"
     >
-      <DarkModeButton />
       <Navigation swiperRef={swiperRef} />
       <Suspense fallback={<Loader />}>
         {showLanding ? (

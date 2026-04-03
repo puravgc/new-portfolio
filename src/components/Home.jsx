@@ -1,33 +1,28 @@
 import React from "react";
 import { useDarkMode } from "../context/DarkModeContext";
-import BlurryBlobs from "./ui/BlurryBlobs";
+import DarkVeil from "./ui/DarkVeil";
 
 const Home = () => {
   const { isDark } = useDarkMode();
 
   return (
-    <div
-      className="relative w-full h-screen flex flex-col items-center justify-center px-8 transition-colors duration-500 overflow-hidden"
-      style={{ background: isDark ? "#111111" : "#f9fafb" }}
-    >
-      <BlurryBlobs />
+    <div className="relative w-full h-screen flex flex-col items-center justify-center px-8 transition-colors duration-500 overflow-hidden bg-[#111111]">
+      <DarkVeil
+        hueShift={0}
+        noiseIntensity={0}
+        scanlineIntensity={0}
+        speed={0.5}
+        scanlineFrequency={0}
+        warpAmount={0}
+      />{" "}
       <div className="max-w-4xl text-center space-y-8 animate-fade-up relative z-10">
-        <h1
-          className="text-5xl md:text-7xl font-semibold tracking-tight transition-colors duration-500"
-          style={{ color: isDark ? "#f9fafb" : "#111827" }}
-        >
+        <h1 className="text-5xl md:text-7xl font-semibold tracking-tight transition-colors duration-500 text-[#f9fafb]">
           Purav G.C
         </h1>
-        <h2
-          className="text-2xl md:text-3xl font-light transition-colors duration-500"
-          style={{ color: isDark ? "#9ca3af" : "#374151" }}
-        >
+        <h2 className="text-2xl md:text-3xl font-light transition-colors duration-500 text-[#9ca3af]">
           Fullstack Developer
         </h2>
-        <p
-          className="text-lg md:text-xl leading-relaxed font-light transition-colors duration-500"
-          style={{ color: isDark ? "#6b7280" : "#4b5563" }}
-        >
+        <p className="text-lg md:text-xl leading-relaxed font-light transition-colors duration-500 text-[#6b7280]">
           Currently working as a Frontend Developer, crafting seamless digital
           experiences with modern technologies and clean, efficient code.
         </p>
@@ -62,7 +57,6 @@ const Home = () => {
           </button>
         </div>
       </div>
-
       <style jsx>{`
         @keyframes fade-up {
           0% {

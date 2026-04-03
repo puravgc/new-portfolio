@@ -2,6 +2,12 @@
 
 body {
   font-family: Inter;
+  background-color: #0f0f0f;
+  color: #f9fafb;
+}
+
+#root {
+  background-color: #0f0f0f;
 }
 /* DOWN */
 .arrow-down.arrow1 {
@@ -89,4 +95,14 @@ body {
     opacity: 0;
     transform: translateX(-10px);
   }
+}
+
+.darkveil-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 0;
 }

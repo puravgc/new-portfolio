@@ -9,7 +9,7 @@ import AboutMe from "./about/AboutMe";
 import Education from "./about/Education";
 import Experience from "./about/Experience";
 import AnimatedArrow from "./ui/AnimatedArrow";
-import BlurryBlobs from "./ui/BlurryBlobs";
+import DarkVeil from "./ui/DarkVeil";
 
 const About = () => {
   const { isDark } = useDarkMode();
@@ -21,10 +21,16 @@ const About = () => {
 
   return (
     <div
-      className="relative w-full h-screen overflow-hidden transition-colors duration-500"
-      style={{ background: isDark ? "#111111" : "#f9fafb" }}
+      className="relative w-full h-screen overflow-hidden transition-colors duration-500 bg-[#111111]"
     >
-      <BlurryBlobs />
+      <DarkVeil
+        hueShift={0}
+        noiseIntensity={0}
+        scanlineIntensity={0}
+        speed={0.5}
+        scanlineFrequency={0}
+        warpAmount={0}
+      />
       {/* Left Arrow */}
       {activeIndex > 0 && (
         <div
@@ -68,12 +74,12 @@ const About = () => {
       </Swiper>
       <style jsx>{`
         .about-swiper :global(.swiper-pagination-bullet) {
-          background: ${subTextColor};
+          background: #9ca3af;
           opacity: 0.5;
         }
 
         .about-swiper :global(.swiper-pagination-bullet-active) {
-          background: ${textColor} !important;
+          background: #f9fafb !important;
           opacity: 1;
           transform: scale(1.2);
         }

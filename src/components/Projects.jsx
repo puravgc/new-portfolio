@@ -1,53 +1,57 @@
 import React from "react";
 import { useDarkMode } from "../context/DarkModeContext";
-import BlurryBlobs from "./ui/BlurryBlobs";
+import DarkVeil from "./ui/DarkVeil";
 
 const Projects = () => {
   const { isDark } = useDarkMode();
 
   const projects = [
     {
-      title: "E-Commerce Platform",
+      title: "Eat More",
       description:
-        "Full-stack online shopping experience with payment integration",
-      tech: "React, Node.js, MongoDB",
+        "Food delivery app with JWT auth, eSewa payments, and real-time order tracking via Socket.IO.",
+      tech: "React, Node.js, MongoDB, Socket.IO",
+      link: "https://eat-more-delta.vercel.app/",
     },
     {
-      title: "Task Management App",
+      title: "Social Media App",
       description:
-        "Collaborative project management tool with real-time updates",
-      tech: "Next.js, Firebase, Tailwind",
+        "Instagram clone with authentication, posts, likes, comments, and follow system.",
+      tech: "React, Express, MongoDB",
+      link: "https://instagram-frontend-nu.vercel.app/",
     },
     {
-      title: "Portfolio Website",
-      description: "Modern and responsive portfolio with smooth animations",
-      tech: "React, Framer Motion, CSS",
+      title: "Netflix Clone",
+      description:
+        "Streaming UI to browse and search movies with user authentication.",
+      tech: "React, API Integration, Tailwind",
+      link: "https://netflixclone-rose.vercel.app/",
     },
     {
-      title: "Weather Dashboard",
-      description: "Real-time weather tracking with interactive maps",
-      tech: "React, API Integration, Charts",
+      title: "Disabled Women Empowerment Committee Project",
+      description:
+        "Secure admin system with full CRUD access for content management.",
+      tech: "Node.js, Express, MongoDB",
+      link: "https://www.dwec.org.np/",
     },
   ];
 
   return (
-    <div
-      className="relative w-full h-screen flex flex-col items-center justify-center px-8 overflow-hidden transition-colors duration-500"
-      style={{ background: isDark ? "#111111" : "#f9fafb" }}
-    >
-      <BlurryBlobs />
+    <div className="relative w-full h-screen flex flex-col items-center justify-center px-8 overflow-hidden transition-colors duration-500 bg-[#111111]">
+      <DarkVeil
+        hueShift={0}
+        noiseIntensity={0}
+        scanlineIntensity={0}
+        speed={0.5}
+        scanlineFrequency={0}
+        warpAmount={0}
+      />
       <div className="max-w-5xl w-full py-16 animate-fade-up relative z-10">
         <div className="text-center space-y-4 mb-12">
-          <h1
-            className="text-5xl md:text-7xl font-semibold tracking-tight transition-colors duration-500"
-            style={{ color: isDark ? "#f9fafb" : "#111827" }}
-          >
+          <h1 className="text-5xl md:text-7xl font-semibold tracking-tight transition-colors duration-500 text-[#f9fafb]">
             My Projects
           </h1>
-          <p
-            className="text-lg md:text-xl font-light transition-colors duration-500"
-            style={{ color: isDark ? "#9ca3af" : "#4b5563" }}
-          >
+          <p className="text-lg md:text-xl font-light transition-colors duration-500 text-[#9ca3af]">
             A collection of work I'm proud of
           </p>
         </div>
@@ -56,59 +60,58 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="p-8 rounded-2xl border transition-all duration-500 space-y-4 backdrop-blur-md"
+              className="p-8 rounded-2xl border transition-all duration-500 space-y-5 backdrop-blur-md flex flex-col group"
               style={{
-                background: isDark
-                  ? "linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%), rgba(30, 30, 30, 0.4)"
-                  : "linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%)",
-                borderColor: isDark
-                  ? "rgba(255, 255, 255, 0.1)"
-                  : "rgba(255, 255, 255, 0.4)",
-                boxShadow: isDark
-                  ? "0 4px 24px 0 rgba(0, 0, 0, 0.37)"
-                  : "0 8px 32px 0 rgba(31, 38, 135, 0.07)",
+                background:
+                  "linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%), rgba(30, 30, 30, 0.4)",
+                borderColor: "rgba(255, 255, 255, 0.1)",
+                boxShadow: "0 4px 24px 0 rgba(0, 0, 0, 0.37)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = isDark
-                  ? "rgba(255, 255, 255, 0.2)"
-                  : "rgba(0, 0, 0, 0.15)";
+                e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.2)";
                 e.currentTarget.style.transform = "translateY(-4px)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = isDark
-                  ? "rgba(255, 255, 255, 0.08)"
-                  : "rgba(0, 0, 0, 0.05)";
+                e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.1)";
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-              <h3
-                className="text-2xl font-semibold transition-colors duration-500"
-                style={{ color: isDark ? "#f9fafb" : "#111827" }}
-              >
-                {project.title}
-              </h3>
-              <p
-                className="leading-relaxed transition-colors duration-500"
-                style={{ color: isDark ? "#9ca3af" : "#4b5563" }}
-              >
+              <div className="flex justify-between items-start">
+                <h3 className="text-2xl font-semibold transition-colors duration-500 text-[#f9fafb]">
+                  {project.title}
+                </h3>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="whitespace-nowrap text-xs font-medium tracking-widest text-[#9ca3af] hover:text-[#f9fafb] transition-colors duration-300 flex items-center gap-1 group/link"
+                >
+                  VIEW PROJECT
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
+                  >
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+              </div>
+              <p className="leading-relaxed transition-colors duration-500 text-[#9ca3af] flex-grow">
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-2 pt-2">
                 {project.tech.split(", ").map((t) => (
                   <span
                     key={t}
-                    className="px-3 py-1 rounded-full text-xs font-medium tracking-wide transition-colors duration-500"
-                    style={{
-                      background: isDark
-                        ? "rgba(255, 255, 255, 0.05)"
-                        : "rgba(0, 0, 0, 0.03)",
-                      color: isDark ? "#9ca3af" : "#4b5563",
-                      border: `1px solid ${
-                        isDark
-                          ? "rgba(255, 255, 255, 0.1)"
-                          : "rgba(0, 0, 0, 0.05)"
-                      }`,
-                    }}
+                    className="px-3 py-1 rounded-full text-xs font-medium tracking-wide transition-colors duration-500 bg-[rgba(255,255,255,0.05)] text-[#9ca3af] border border-[rgba(255,255,255,0.1)]"
                   >
                     {t}
                   </span>

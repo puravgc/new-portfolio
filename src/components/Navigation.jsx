@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { Tooltip } from "@mui/material";
 import { Icon } from "@iconify/react";
-import { useDarkMode } from "../context/DarkModeContext";
-
 const Navigation = ({ swiperRef }) => {
-  const { isDark } = useDarkMode();
   const [showMenu, setShowMenu] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
 
@@ -50,7 +47,10 @@ const Navigation = ({ swiperRef }) => {
                     } 0.4s cubic-bezier(0.34,1.56,0.64,1) ${index * 0.1}s both`,
                   }}
                 >
-                  <Icon icon={item.icon} style={{ width: 24, height: 24, color: isDark ? "#f9fafb" : "#111827" }} />
+                  <Icon
+                    icon={item.icon}
+                    style={{ width: 24, height: 24, color: "#f9fafb" }}
+                  />
                 </div>
               </Tooltip>
             ))}
@@ -69,13 +69,13 @@ const Navigation = ({ swiperRef }) => {
                   ? "rotate-45 translate-y-2.5"
                   : "rotate-0 translate-y-0"
               }`}
-              style={{ background: isDark ? "#f9fafb" : "#111827" }}
+              style={{ background: "#f9fafb" }}
             ></span>
             <span
               className={`block w-full h-1 rounded transition-all duration-500 ${
                 showMenu ? "opacity-0" : "opacity-100"
               }`}
-              style={{ background: isDark ? "#f9fafb" : "#111827" }}
+              style={{ background: "#f9fafb" }}
             ></span>
             <span
               className={`block w-full h-1 rounded transition-all duration-500 ${
@@ -83,7 +83,7 @@ const Navigation = ({ swiperRef }) => {
                   ? "-rotate-45 -translate-y-2.5"
                   : "rotate-0 translate-y-0"
               }`}
-              style={{ background: isDark ? "#f9fafb" : "#111827" }}
+              style={{ background: "#f9fafb" }}
             ></span>
           </div>
         </button>
@@ -102,7 +102,14 @@ const Navigation = ({ swiperRef }) => {
                     } 0.4s cubic-bezier(0.34,1.56,0.64,1) ${index * 0.1}s both`,
                   }}
                 >
-                  <Icon icon={item.icon} style={{ width: 24, height: 24, color: isDark ? "#f9fafb" : "#111827" }} />
+                  <Icon
+                    icon={item.icon}
+                    style={{
+                      width: 24,
+                      height: 24,
+                      color: "#f9fafb",
+                    }}
+                  />
                 </div>
               </Tooltip>
             ))}
@@ -112,11 +119,11 @@ const Navigation = ({ swiperRef }) => {
 
       <style jsx>{`
         .glass-card-ios {
-          background: ${isDark ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.3)"};
+          background: rgba(255, 255, 255, 0.08);
           backdrop-filter: blur(8px);
           -webkit-backdrop-filter: blur(8px);
-          border: 1px solid ${isDark ? "rgba(255,255,255,0.12)" : "rgba(255,255,255,0.2)"};
-          box-shadow: 0 8px 32px rgba(0, 0, 0, ${isDark ? "0.4" : "0.12"});
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
         }
 
         @keyframes slideDown {

@@ -9,10 +9,10 @@ const AboutMe = () => {
   const mutedTextColor = isDark ? "#6b7280" : "#9ca3af";
 
   const stats = [
-    { value: "3+", label: "Years Experience" },
-    { value: "20+", label: "Projects Completed" },
-    { value: "15+", label: "Technologies" },
-    { value: "100%", label: "Client Satisfaction" },
+    { value: "1+", label: "Years Experience" },
+    { value: "5+", label: "Projects Completed" },
+    { value: "12+", label: "Technologies" },
+    { value: "2", label: "Companies Worked" },
   ];
 
   return (

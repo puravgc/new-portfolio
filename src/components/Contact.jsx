@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDarkMode } from "../context/DarkModeContext";
-import { sendMyEmail } from "./helper/mail";
+import { sendMyEmail } from "./service/mailService";
 import { toast } from "react-toastify";
 import DarkVeil from "./ui/DarkVeil";
 
@@ -70,9 +70,7 @@ const Contact = () => {
   };
 
   return (
-    <div
-      className="relative w-full h-screen flex flex-col items-center justify-center px-8 transition-colors duration-500 overflow-hidden bg-[#111111]"
-    >
+    <div className="relative w-full h-screen flex flex-col items-center justify-center px-8 transition-colors duration-500 overflow-hidden bg-[#111111]">
       <DarkVeil
         hueShift={0}
         noiseIntensity={0}
@@ -83,14 +81,10 @@ const Contact = () => {
       />
       <div className="max-w-2xl w-full space-y-8 animate-fade-up relative z-10">
         <div className="text-center space-y-4">
-          <h1
-            className="text-5xl md:text-7xl font-semibold tracking-tight transition-colors duration-500 text-[#f9fafb]"
-          >
+          <h1 className="text-5xl md:text-7xl font-semibold tracking-tight transition-colors duration-500 text-[#f9fafb]">
             Get In Touch
           </h1>
-          <p
-            className="text-lg md:text-xl font-light transition-colors duration-500 text-[#9ca3af]"
-          >
+          <p className="text-lg md:text-xl font-light transition-colors duration-500 text-[#9ca3af]">
             Let's work together on your next project
           </p>
         </div>

@@ -7,6 +7,12 @@ export const sendMyEmail = async ({ name, email, message }) => {
     to_email: import.meta.env.VITE_EMAIL,
     message: message,
   };
+  console.log({
+    a: import.meta.env.VITE_SERVICE_ID,
+    b: import.meta.env.VITE_TEMPLATE_ID,
+    c: templateParams,
+    d: import.meta.env.VITE_PUBLIC_KEY,
+  });
 
   await emailjs.send(
     import.meta.env.VITE_SERVICE_ID,

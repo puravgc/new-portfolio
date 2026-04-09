@@ -48,10 +48,10 @@ const VerticalSwiper = ({ swiperRef }) => {
       }}
     >
       <SwiperSlide>
-        <Home />
+        <Home swiperRef={swiperRef} />
       </SwiperSlide>
       <SwiperSlide>
-        <About />
+        <About swiperRef={swiperRef} />
       </SwiperSlide>
       <SwiperSlide>
         <Projects />

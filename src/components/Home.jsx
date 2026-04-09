@@ -2,7 +2,7 @@ import React from "react";
 import { useDarkMode } from "../context/DarkModeContext";
 import DarkVeil from "./ui/DarkVeil";
 
-const Home = () => {
+const Home = ({ swiperRef }) => {
   const { isDark } = useDarkMode();
 
   return (
@@ -34,6 +34,7 @@ const Home = () => {
               background: isDark ? "#f9fafb" : "#111827",
               color: isDark ? "#111827" : "#f9fafb",
             }}
+            onClick={() => swiperRef.current.slideTo(2)}
           >
             VIEW WORK
           </button>
@@ -52,6 +53,7 @@ const Home = () => {
               e.currentTarget.style.background = "transparent";
               e.currentTarget.style.color = isDark ? "#f9fafb" : "#111827";
             }}
+            onClick={() => swiperRef.current.slideTo(3)}
           >
             CONTACT ME
           </button>

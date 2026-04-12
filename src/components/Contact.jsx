@@ -22,7 +22,7 @@ const Contact = () => {
     setIsSending(true);
     try {
       await sendMyEmail(formData);
-      toast.success("✅ Message sent! I'll get back to you soon.", {
+      toast.success("Message sent! I'll get back to you soon.", {
         theme: isDark ? "dark" : "light",
       });
       setFormData({ name: "", email: "", message: "" });

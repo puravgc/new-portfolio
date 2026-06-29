@@ -18,12 +18,12 @@ const AnimatedArrow = ({ direction = "down", className = "", color }) => {
     >
       <Icon
         icon={directionMap[direction]}
-        className={`absolute text-3xl arrow1 arrow-${direction}`}
+        className={`absolute text-4xl arrow1 arrow-${direction}`}
         style={{ color: arrowColor }}
       />
       <Icon
         icon={directionMap[direction]}
-        className={`absolute text-3xl arrow2 arrow-${direction}`}
+        className={`absolute text-4xl arrow2 arrow-${direction}`}
         style={{ color: arrowColor }}
       />
     </div>

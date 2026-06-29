@@ -27,7 +27,7 @@ const Home = ({ swiperRef }) => {
           experiences with modern technologies and clean, efficient code.
         </p>
 
-        <div className="flex gap-6 justify-center mt-8">
+        <div className="flex gap-4 justify-center mt-8 flex-wrap">
           <button
             className="cursor-pointer px-8 py-3 rounded-md font-medium text-lg transition-all duration-300 tracking-wide"
             style={{
@@ -38,6 +38,41 @@ const Home = ({ swiperRef }) => {
           >
             VIEW WORK
           </button>
+          <a
+            href="/finalcv.pdf"
+            download
+            className="cursor-pointer px-8 py-3 rounded-md font-medium text-lg transition-all duration-300 tracking-wide inline-flex items-center gap-2 no-underline"
+            style={{
+              background: "transparent",
+              color: isDark ? "#f9fafb" : "#111827",
+              border: `2px solid ${isDark ? "#f9fafb" : "#111827"}`,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = isDark ? "#f9fafb" : "#111827";
+              e.currentTarget.style.color = isDark ? "#111827" : "#f9fafb";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.color = isDark ? "#f9fafb" : "#111827";
+            }}
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="cv-download-icon"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            DOWNLOAD CV
+          </a>
           <button
             className="cursor-pointer px-8 py-3 rounded-md font-medium text-lg transition-all duration-300 tracking-wide"
             style={{

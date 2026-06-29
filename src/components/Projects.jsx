@@ -21,11 +21,11 @@ const Projects = () => {
       link: "https://instagram-frontend-nu.vercel.app/",
     },
     {
-      title: "Netflix Clone",
+      title: "HireSense",
       description:
-        "Streaming UI to browse and search movies with user authentication.",
-      tech: "React, API Integration, Tailwind",
-      link: "https://netflixclone-rose.vercel.app/",
+        "AI-powered recruitment platform that streamlines hiring with intelligent candidate management, resume analysis, and recruitment workflows.",
+      tech: "React, Node.js, Express, MongoDB",
+      link: "https://github.com/puravgc/hiresense",
     },
     {
       title: "Disabled Women Empowerment Committee Project",

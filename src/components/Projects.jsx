@@ -18,7 +18,7 @@ const Projects = () => {
       description:
         "Instagram clone with authentication, posts, likes, comments, and follow system.",
       tech: "React, Express, MongoDB",
-      link: "https://instagram-frontend-nu.vercel.app/",
+      link: "https://instagram-frontend-ivory.vercel.app/",
     },
     {
       title: "HireSense",

@@ -12,9 +12,8 @@ const Education = () => {
     {
       degree: "Bachelor in Computer Science and Information Technology",
       school: "Prithvi Narayan Campus",
-      period: "Currently Studying (7th Semester)",
-      description:
-        "Focused on Software Engineering and Artificial Intelligence.",
+      period: "Currently Studying (8th Semester)",
+      description: "Focused on Computer Fundamentals",
     },
     {
       degree: "High School",
@@ -25,15 +24,15 @@ const Education = () => {
   ];
 
   return (
-    <div className="h-full w-full flex flex-col items-center justify-center px-8 sm:px-16 overflow-y-auto pt-16 pb-16">
-      <div className="max-w-4xl w-full space-y-12 animate-fade-up">
+    <div className="h-full w-full flex flex-col items-center justify-center px-8 sm:px-16 overflow-y-auto pt-8 pb-8">
+      <div className="max-w-4xl w-full space-y-6 md:space-y-8 animate-fade-up">
         <h1
-          className="text-5xl md:text-7xl font-semibold tracking-tight text-center transition-colors duration-500"
+          className="text-4xl md:text-6xl font-semibold tracking-tight text-center transition-colors duration-500"
           style={{ color: textColor }}
         >
           Education
         </h1>
-        <div className="space-y-8 relative before:absolute before:left-0 md:before:left-1/2 before:top-0 before:h-full before:w-[2px] before:bg-gradient-to-b before:from-transparent before:via-gray-400 before:to-transparent">
+        <div className="space-y-6 relative before:absolute before:left-0 md:before:left-1/2 before:top-0 before:h-full before:w-[2px] before:bg-gradient-to-b before:from-transparent before:via-gray-400 before:to-transparent">
           {education.map((edu, idx) => (
             <div
               key={edu.degree}
@@ -46,27 +45,27 @@ const Education = () => {
                   borderColor: subTextColor,
                 }}
               />
-              <div className="space-y-2">
+              <div className="space-y-1">
                 <span
-                  className="text-sm font-medium uppercase tracking-wider"
+                  className="text-xs md:text-sm font-medium uppercase tracking-wider"
                   style={{ color: mutedTextColor }}
                 >
                   {edu.period}
                 </span>
                 <h3
-                  className="text-2xl font-semibold"
+                  className="text-xl md:text-2xl font-semibold"
                   style={{ color: textColor }}
                 >
                   {edu.degree}
                 </h3>
                 <p
-                  className="text-lg font-medium"
+                  className="text-base md:text-lg font-medium"
                   style={{ color: subTextColor }}
                 >
                   {edu.school}
                 </p>
                 <p
-                  className="font-light leading-relaxed"
+                  className="text-sm md:text-base font-light leading-relaxed"
                   style={{ color: mutedTextColor }}
                 >
                   {edu.description}
